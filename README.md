@@ -2,6 +2,8 @@
 
 A gem for generating directories, subdirectiories and empty files automaticaly based on paths from a yaml file.
 
+For now it doesn't delete any file but it will overwrite if there are any conflicts.
+
 ## Installation
 
 Add this line to your application's Gemfile:
@@ -20,7 +22,19 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+Reqiure module and method.
+
+```ruby
+"mkfiles/generate_from_file"
+```
+
+Use it.
+
+```ruby
+Mkfiles.generate_from_file("sample.yml")
+```
+
+Put a path to your yml file. Pay attention for your current working directory if you are using relative start place in your yml file.
 
 ## The yaml file
 
@@ -45,6 +59,12 @@ sub_paths:
   - qewasdsdf/sd23e2fv/dwqqwdqwef/
   - New Folderr53453/New Folder44444574/new document63452.txt
 ```
+
+## To do features
+
+- CLI commands
+- Template yml file generator
+
 ## Development
 
 After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
