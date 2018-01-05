@@ -1,8 +1,6 @@
 # Mkfiles
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/mkfiles`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+A gem for generating directories, subdirectiories and empty files automaticaly based on paths from a yaml file.
 
 ## Installation
 
@@ -24,6 +22,29 @@ Or install it yourself as:
 
 TODO: Write usage instructions here
 
+## The yaml file
+
+The path to this file must be passed as an argument for the script. It contains the path for a root directory (for example "." for current dirrectory) and paths for all entries (directories, subdirectories and empty files) that will be created.
+
+Start place and sub paths can be relative or absolute.
+
+Sub paths for directories and subdirectories must ended with "/".
+
+Use "/" as the directory separator.
+
+An example of yaml file
+
+```
+start_place: "."
+
+sub_paths:
+  - random_directory_341234213/
+  - ewqrfsd.txt
+  - vdfewre/fwewfevc.txt
+  - qewasdsdf/sd23e2fv/wfe32gv/d322fvgd/
+  - qewasdsdf/sd23e2fv/dwqqwdqwef/
+  - New Folderr53453/New Folder44444574/new document63452.txt
+```
 ## Development
 
 After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
@@ -32,7 +53,7 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/mkfiles.
+Bug reports are welcome on GitHub at https://github.com/[USERNAME]/mkfiles.
 
 ## License
 
