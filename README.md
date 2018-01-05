@@ -36,11 +36,11 @@ Mkfiles.generate_from_file("sample.yml")
 
 Put a path to your yml file. Pay attention for your current working directory if you are using relative start place in your yml file.
 
-## The yaml file
+## Yaml files
 
-The path to this file must be passed as an argument for the script. It contains the path for a root directory (for example "." for current dirrectory) and paths for all entries (directories, subdirectories and empty files) that will be created.
+The path to a yaml file must be passed as an argument for the script. It contains the start place path (for example "." for current dirrectory) and relative paths for all entries (directories, subdirectories and empty files) that will be created.
 
-Start place and sub paths can be relative or absolute.
+Start place can be relative or absolute.
 
 Sub paths for directories and subdirectories must ended with "/".
 
@@ -70,10 +70,6 @@ sub_paths:
 After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
 
 To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
-
-## Contributing
-
-Bug reports are welcome on GitHub at https://github.com/[USERNAME]/mkfiles.
 
 ## License
 
