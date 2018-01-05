@@ -1,4 +1,4 @@
-require_relative "../lib/mkfiles/config"
+require "mkfiles/config"
 
 RSpec.describe Mkfiles::Config do
 

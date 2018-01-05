@@ -1,4 +1,4 @@
-require_relative "../lib/mkfiles/create_directory"
+require "mkfiles/create_directory"
 require "tmpdir"
 
 RSpec.describe Mkfiles do

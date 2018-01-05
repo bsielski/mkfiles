@@ -1,4 +1,4 @@
-require_relative "../lib/mkfiles/absolutize_paths"
+require "mkfiles/absolutize_paths"
 require "tmpdir"
 
 RSpec.describe "Mkfiles::absolutize_paths" do

@@ -1,4 +1,4 @@
-require_relative "../lib/mkfiles/extract_yaml"
+require "mkfiles/extract_yaml"
 require "tmpdir"
 
 RSpec.describe Mkfiles do
