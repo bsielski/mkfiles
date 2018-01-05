@@ -1,4 +1,5 @@
 require "mkfiles/create_file"
+require "mkfiles/create_directory"
 require "tmpdir"
 
 RSpec.describe Mkfiles do
