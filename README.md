@@ -25,7 +25,7 @@ Or install it yourself as:
 Reqiure module and method.
 
 ```ruby
-"mkfiles/generate_from_file"
+require "mkfiles/generate_from_file"
 ```
 
 Use it.
