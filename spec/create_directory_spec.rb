@@ -27,6 +27,23 @@ RSpec.describe "Mkfiles::create_directory" do
     end
   end
 
+  it "creates 'dots' directories" do
+    Dir.mktmpdir do |dir|
+      abs_dot_directory_path = dir + "/.example_d"
+      Mkfiles.create_directory(abs_dot_directory_path)
+      expect(Dir.entries(dir)).to contain_exactly(".", "..", ".example_d")
+    end
+  end
+
+    it "creates nested 'dots' directories" do
+    Dir.mktmpdir do |dir|
+      abs_dot_directory_path = dir + "/.example_1/.example_2"
+      Mkfiles.create_directory(abs_dot_directory_path)
+      expect(Dir.entries(dir)).to contain_exactly(".", "..", ".example_1")
+      expect(Dir.entries(dir + "/.example_1")).to contain_exactly(".", "..", ".example_2")
+    end
+  end
+
   it "doesn't create a file" do
     Dir.mktmpdir do |dir|
       abs_directory_path = dir + "/example_d"
@@ -61,6 +78,15 @@ RSpec.describe "Mkfiles::create_directory" do
     end
   end
 
+  it "works with spaces in 'dot' directory name" do
+    Dir.mktmpdir do |dir|
+      abs_file_path = dir + "/.some dir/.example dir"
+      Mkfiles.create_file(abs_file_path)
+      expect(Dir.entries(dir)).to contain_exactly(".", "..", ".some dir")
+      expect(Dir.entries(dir + "/.some dir")).to contain_exactly(".", "..", ".example dir")
+    end
+  end
+  
   it "works with spaces in subdirectory name" do
     Dir.mktmpdir do |dir|
       abs_file_path = dir + "/some dir/example dir"
