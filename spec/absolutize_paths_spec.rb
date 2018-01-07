@@ -35,7 +35,7 @@ RSpec.describe "Mkfiles::absolutize_paths" do
 
   end
 
-  context "multiple path is passed" do
+  context "multiple paths are passed" do
     
     let (:absolute_start_path) { File.expand_path('~') + "/Documents" }
 
@@ -54,6 +54,31 @@ RSpec.describe "Mkfiles::absolutize_paths" do
         absolute_start_path + "/projects/Ruby/test.rb",
         absolute_start_path + "/projects/Ruby/Gemfile",
         absolute_start_path + "/projects/JS/script.js",
+      ]
+      expect(Mkfiles.absolutize_paths(absolute_start_path, rel_paths)).to contain_exactly(*expected)
+    end
+
+  end
+
+  context "multiple paths with spaces and dots are passed" do
+    
+    let (:absolute_start_path) { File.expand_path('~') + "/Documents" }
+
+    it "returns an array with correct absolute path for file" do
+      start_dir = absolute_start_path
+      rel_paths = [
+        "projects/.JS/.script.js",
+        "projects/",
+        "projects/.Ru by/test or spec.rb",
+        "projects/.Ru by/",
+        "projects/.Ru by/Gemfile",
+      ]
+      expected = [
+        absolute_start_path + "/projects/",
+        absolute_start_path + "/projects/.Ru by/",
+        absolute_start_path + "/projects/.Ru by/test or spec.rb",
+        absolute_start_path + "/projects/.Ru by/Gemfile",
+        absolute_start_path + "/projects/.JS/.script.js",
       ]
       expect(Mkfiles.absolutize_paths(absolute_start_path, rel_paths)).to contain_exactly(*expected)
     end
