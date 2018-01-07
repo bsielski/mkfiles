@@ -19,6 +19,15 @@ RSpec.describe "Mkfiles::create_file" do
     end
   end
 
+  it "creates a dot (hidden) file" do
+    Dir.mktmpdir do |dir|
+      abs_hidden_file_path = dir + "/.hidden file.txt"
+      Mkfiles.create_file(abs_hidden_file_path)
+      expect(Dir.entries(dir)).to contain_exactly(".", "..", ".hidden file.txt")
+      expect(File.file?(abs_hidden_file_path)).to be true        
+    end
+  end
+  
   it "doesn't create a directory" do
     Dir.mktmpdir do |dir|
       abs_file_path = dir + "/example.txt"
