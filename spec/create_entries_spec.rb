@@ -133,4 +133,18 @@ RSpec.describe "Mkfiles::create_entries" do
     
   end
   
+  context "when paths have spaces and dots" do
+    
+    it "creates entries correctly" do
+      Dir.mktmpdir do |dir|
+        file1 = dir + "/.nest one/nest .two/.example file1.txt"
+        dir1 = dir + "/.nest one/nest .two/.nest three_b"
+        Mkfiles.create_entries([file1, dir1])
+        expect(Dir.entries(dir + "/.nest one/nest .two")).to contain_exactly(".", "..", ".nest three_b", ".example file1.txt")
+        expect(Dir.entries(dir)).to contain_exactly(".", "..", ".nest one")
+      end
+    end
+    
+  end
+  
 end
