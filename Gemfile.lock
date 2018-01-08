@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    mkfiles (0.1.2)
+    mkfiles (0.2.0)
 
 GEM
   remote: https://rubygems.org/
