@@ -1,0 +1,6 @@
+#!/usr/bin/env ruby
+
+require "mkfiles/parse_options"
+require "mkfiles/cli_application"
+
+Mkfiles.cli_application(Mkfiles.parse_options(ARGV))
