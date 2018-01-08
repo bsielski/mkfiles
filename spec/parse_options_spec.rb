@@ -40,11 +40,11 @@ RSpec.describe "Mkfiles::parse_options" do
   end
 
   context "with -g/--generate option and file name as arguments" do
-    it "returns hash with generate_yaml option and the file name" do
+    it "returns hash with generate_yaml key and the file name value" do
       expect(Mkfiles.parse_options ["-g", "test.yaml"])
-        .to eq({generate_yaml: true, files: ["test.yaml"]})
+        .to eq({generate_yaml: "test.yaml"})
       expect(Mkfiles.parse_options ["--generate", "test.yaml"])
-        .to eq({generate_yaml: true, files: ["test.yaml"]})
+        .to eq({generate_yaml: "test.yaml"})
     end
   end
 
