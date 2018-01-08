@@ -13,6 +13,10 @@ module Mkfiles
         options[:help] = true
         files = false
       end
+      opts.on("-v", "--version") do
+        options[:version] = true
+        files = false
+      end
       opts.on("-g", "--generate=PATH_TO_FILE") do |path|
         options[:generate_yaml] = path
         files = false
