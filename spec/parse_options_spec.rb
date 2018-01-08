@@ -48,5 +48,13 @@ RSpec.describe "Mkfiles::parse_options" do
     end
   end
 
+  context "with -v/--version option as arguments" do
+    it "returns hash with version key and the true as value" do
+      expect(Mkfiles.parse_options ["-v"])
+        .to eq({version: true})
+      expect(Mkfiles.parse_options ["--version"])
+        .to eq({version: true})
+    end
+  end
   
 end
