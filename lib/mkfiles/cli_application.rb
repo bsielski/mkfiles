@@ -1,3 +1,5 @@
+require "mkfiles/version"
+
 module Mkfiles
   
   def self.cli_application(options)
