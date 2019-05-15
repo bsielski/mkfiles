@@ -21,22 +21,24 @@ RSpec.describe "Mkfiles::parse_options" do
     end
   end
 
-  context "with '-h' as the only argument" do
-    it "return hash with help option as true" do
-      expect(Mkfiles.parse_options ["-h"]).to eq({help: true})
+  context "with '-h/help' as the only argument or no arguments" do
+    let(:results) {
+      [
+        Mkfiles.parse_options(["-h"]),
+        Mkfiles.parse_options(["--help"]),
+        Mkfiles.parse_options([]),
+      ]
+    }
+    it "return hash with help key" do
+      expect(results.all? { |r| !r[:help].nil? }).to be true
     end
-  end
-  
-  context "with '--help' as the only argument" do
-    it "return hash with help option as true" do
-      expect(Mkfiles.parse_options ["--help"]).to eq({help: true})
+    it "return hash with help key and value that has a string" do
+      expect(results.all? { |r| r[:help].is_a?(String) }).to be true
     end
-  end
+    it "return hash with help key and value that has a manual" do
+      expect(results.all? { |r| r[:help].include?("Usage: mkfiles") }).to be true
+    end
 
-  context "with an empty array as an argument" do
-    it "return hash with help option as true" do
-      expect(Mkfiles.parse_options []) .to eq({help: true})
-    end
   end
 
   context "with -g/--generate option and file name as arguments" do

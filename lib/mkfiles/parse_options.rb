@@ -10,7 +10,7 @@ module Mkfiles
     files = true
     parser = OptionParser.new do |opts|
       opts.on("-h", "--help") do
-        options[:help] = true
+        options[:help] = ""
         files = false
       end
       opts.on("-v", "--version") do
